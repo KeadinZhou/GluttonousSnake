@@ -1,0 +1,43 @@
+Mouse单元 
+
+过程 
+InitMouse                  启用鼠标 
+DoneMouse                  停用鼠标 
+HideMouse                  隐藏鼠标指针 
+ShowMouse                  显示鼠标指针 
+SetMouseXY(X,Y)X,Y:Integer将鼠标指针移动至(X,Y) 
+GetMouseEvent(MouseEvent:TMouseEvent) 
+                           得到鼠标数据并将其存入MouseEvent中 
+PutMouseEvent(MouseEvent:TMouseEvent) 
+                           用MouseEvent代替当前鼠标数据 
+
+函数 
+DetectMouse        Integer 返回值为0时代表没有鼠标,否则返回鼠标按键数 
+GetMouseButtons    Integer 0代表没有按键,1代表左键,2代表右键,4代表中间键(非滚轮) 
+GetMouseX          Integer 返回鼠标所在位置列数 
+GetMouseY          Integer 返回鼠标所在位置行数 
+PollMouseEvent(MouseEvent:TMouseEvent) Boolean 
+                           返回鼠标信息是否被更新(True为未更新) 
+GetMouseDriver             用途不明 
+SetMouseDriver             用途不明 
+
+常数 
+MouseLeftButton    Integer 代表左键,值为1 
+MouseRightButton   Integer 代表右键,值为2 
+MouseMiddleButton Integer 代表中间键(非滚轮),值为4 
+MouseEventBufSize Integer 鼠标缓冲,值为16 
+MouseActionDown    Integer 代表按下鼠标,值为1 
+MouseActionUp      Integer 代表松开鼠标,值为2 
+MouseActionMove    Integer 代表移动鼠标,值为4 
+errMouseBase       Integer 基本鼠标错误,值为1030 
+errMouseInitError Integer 鼠标使用错误,errMouseBase+0 
+errMouseNotImplemented Integer 
+                           功能无法实现,errMouseBase+1 
+
+注: 
+对TMouseEvent的解释： 
+记录类型，表示鼠标的综合数据。 
+域 Buttons:Integer         按键信息，等于GetMouseButtons 
+    X,Y:Integer             指针位置信息，等于GetMouseX/GetMouseY 
+    Action:Integer          移动信息，4代表移动，0代表未移动，1代表鼠标按键按下，2代表鼠标按键抬起 
+                           (如144442就是按着鼠标拖动3格) 
